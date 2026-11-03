@@ -1,0 +1,7 @@
+<div class="page-heading"><div><div class="eyebrow">GAMBARAN BESAR</div><h1>Peta konsep</h1><p>Ikuti jalur dari perangkat yang saling terhubung hingga pengalamatan paket di dalam jaringan.</p></div></div>
+<div class="concept-intro"><div class="concept-center-icon">⌘</div><div><span class="eyebrow">KOMPETENSI INTI</span><h2>Memahami jaringan dari susunan hingga alamat.</h2></div></div>
+<div class="concept-units">
+    @foreach ([1=>'Topologi jaringan',2=>'Pengalamatan IP'] as $unit=>$title)
+        <section class="concept-unit {{ $unit === 1 ? 'unit-blue' : 'unit-cyan' }}"><div class="concept-unit-head"><span class="unit-number">UNIT 0{{ $unit }}</span><h3>{{ $title }}</h3><p>{{ $unit === 1 ? 'Bagaimana perangkat tersusun dan jalur komunikasi dibangun.' : 'Bagaimana host dikenali dan subnet dibagi dengan terstruktur.' }}</p></div><div class="concept-branches">@foreach ($lessons as $index=>$item) @if ($item['unit']===$unit)<a href="{{ route('lesson',$item['id']) }}"><span class="branch-index">{{ str_pad((string) ($index+1),2,'0',STR_PAD_LEFT) }}</span><span>{{ $item['title'] }}</span><span>→</span></a>@endif @endforeach</div><a class="text-button" href="{{ route('lesson',$unit===1?'jaringan':'ipv4') }}">Mulai Unit {{ $unit }} →</a></section>
+    @endforeach
+</div><div class="concept-bridge"><span></span><div><b>Praktik terintegrasi</b><small>Hubungkan kedua unit melalui aktivitas dan evaluasi.</small></div><a class="btn btn-secondary" href="{{ route('activities') }}">Buka aktivitas →</a></div>
